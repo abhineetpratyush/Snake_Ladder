@@ -4,16 +4,18 @@ public class Snake_Ladder{
 	public static final int LADDER = 1;
 	public static final int SNAKE = 2;
 	public static void main(String[] args){
-		int pos = 0;
+		int pos = 0, count = 0;
 		System.out.println("Welcome to the game of Snakes and Ladders");
 		while(pos != 100){
 			int die_roll = DieRoll();
 			System.out.println("----------------");
 			System.out.println("Die Roll: " + die_roll);
+			count++;
 			int option = OptionGenerator();
 			pos = ChangePos(pos, die_roll, option);
 			System.out.println("New pos: " + pos);
 		}
+		System.out.println("No. of dice rolls needed to win: " + count);
 	}
 	//method to  return a random value of dice roll
 	public static int DieRoll(){
