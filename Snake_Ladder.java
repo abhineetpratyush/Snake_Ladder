@@ -4,18 +4,39 @@ public class Snake_Ladder{
 	public static final int LADDER = 1;
 	public static final int SNAKE = 2;
 	public static void main(String[] args){
-		int pos = 0, count = 0;
+		int pos_p1 = 0, pos_p2 = 0, count_p1 = 0, count_p2 = 0, rolling_chance = 0, option = 0;
 		System.out.println("Welcome to the game of Snakes and Ladders");
-		while(pos != 100){
-			int die_roll = DieRoll();
-			System.out.println("----------------");
-			System.out.println("Die Roll: " + die_roll);
-			count++;
-			int option = OptionGenerator();
-			pos = ChangePos(pos, die_roll, option);
-			System.out.println("New pos: " + pos);
+		while(pos_p1 != 100 && pos_p2 != 100){
+			rolling_chance++; //alternately give chances to P1 and P2
+			if(rolling_chance % 2 != 0){
+				//Player1
+				do{
+					int die_roll = DieRoll();
+					System.out.println("----Player 1----");
+					System.out.println("Die Roll: " + die_roll);
+					count_p1++;
+					option = OptionGenerator();
+					pos_p1 = ChangePos(pos_p1, die_roll, option);
+					System.out.println("New pos: " + pos_p1);
+				} while(option == LADDER && pos_p1 != 100);
+			}
+			else{
+				//Player2
+                                do{
+                                        int die_roll = DieRoll();
+                                        System.out.println("----Player 2----");
+                                        System.out.println("Die Roll: " + die_roll);
+                                        count_p2++;
+                                        option = OptionGenerator();
+                                        pos_p2 = ChangePos(pos_p2, die_roll, option);
+                                        System.out.println("New pos: " + pos_p2);
+                                } while(option == LADDER && pos_p2 != 100);
+			}
 		}
-		System.out.println("No. of dice rolls needed to win: " + count);
+		if(pos_p1 == 100)
+			System.out.println("Winner: Player 1 | No. of dice rolls needed to win (Player 1): " + count_p1);
+		else
+			System.out.println("Winner: Player 2 | No. of dice rolls needed to win (Player 2): " + count_p2++);
 	}
 	//method to  return a random value of dice roll
 	public static int DieRoll(){
