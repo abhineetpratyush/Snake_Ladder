@@ -6,13 +6,12 @@ public class Snake_Ladder{
 	public static void main(String[] args){
 		int pos = 0;
 		System.out.println("Welcome to the game of Snakes and Ladders");
-		while(pos < 100){
+		while(pos != 100){
 			int die_roll = DieRoll();
 			System.out.println("----------------");
 			System.out.println("Die Roll: " + die_roll);
 			int option = OptionGenerator();
 			pos = ChangePos(pos, die_roll, option);
-			//new pos can go above 100 at the end, exact 100 is covered in the next use case
 			System.out.println("New pos: " + pos);
 		}
 	}
