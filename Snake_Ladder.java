@@ -34,7 +34,6 @@ public class Snake_Ladder{
 				pos += die_roll;
 				System.out.println("Option: Ladder");
 				break;
-			//the new pos in case of snake can go below 0, that restriction has been applied in the following use cases
 			case SNAKE:
 				pos -= die_roll;
 				System.out.println("Option: Snake");
