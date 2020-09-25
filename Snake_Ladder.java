@@ -6,10 +6,15 @@ public class Snake_Ladder{
 	public static void main(String[] args){
 		int pos = 0;
 		System.out.println("Welcome to the game of Snakes and Ladders");
-		int die_roll = DieRoll();
-		System.out.println("Die Roll: " + die_roll);
-		int option = OptionGenerator();
-		System.out.println("New pos: " + ChangePos(pos, die_roll, option));
+		while(pos < 100){
+			int die_roll = DieRoll();
+			System.out.println("----------------");
+			System.out.println("Die Roll: " + die_roll);
+			int option = OptionGenerator();
+			pos = ChangePos(pos, die_roll, option);
+			//new pos can go above 100 at the end, exact 100 is covered in the next use case
+			System.out.println("New pos: " + pos);
+		}
 	}
 	//method to  return a random value of dice roll
 	public static int DieRoll(){
@@ -37,6 +42,8 @@ public class Snake_Ladder{
 			default:
 				System.out.println("Option: No Play");
 		}
+		if(pos < 0)
+			pos = 0;
 		return pos;
 	}
 
